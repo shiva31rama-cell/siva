@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Details Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at random, #ffadad, #ffd6a5, #fdffb6, #caffbf, #9bf6ff, #a0c4ff, #bdb2ff);
+      background-size: 100% 100%;
+      padding: 30px;
+    }
+
+    .form-container {
+      background-color: #e0f0ff;
+      border: 2px solid green;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }right click to o[pen ]
+
+    .form-container h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px;
+      width: 100%;
+      background-color: green;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .output {
+      margin-top: 20px;
+      padding: 15px;
+      border: 2px solid green;
+      background-color: #d0eaff;
+      border-radius: 10px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>User Info Form</h2>
+    <label for="name">What's your name?</label>
+    <input type="text" id="name" placeholder="Enter your name">
+
+    <label for="roll">Roll No</label>
+    <input type="text" id="roll" placeholder="Enter your roll number">
+
+    <label for="age">What's your age?</label>
+    <input type="number" id="age" placeholder="Enter your age">
+
+    <button onclick="showDetails()">Submit</button>
+
+    <div class="output" id="output" style="display:none;"></div>
+  </div>
+
+  <script>
+    function showDetails() {
+      const name = document.getElementById('name').value;
+      const roll = document.getElementById('roll').value;
+      const age = document.getElementById('age').value;
+
+      const outputDiv = document.getElementById('output');
+      outputDiv.innerHTML = `
+        <strong>Name:</strong> ${name}<br>
+        <strong>Roll No:</strong> ${roll}<br>
+        <strong>Age:</strong> ${age}
+      `;
+      outputDiv.style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
