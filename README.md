@@ -1,23 +1,53 @@
-# Menu & Website Starter Templates
+# Siva — Pro Menu & Website Template Library
 
-A beginner-friendly collection of reusable HTML/CSS/JavaScript templates for restaurants, businesses, portfolios, gold/jewellery sites, and other small websites.
+A reusable, beginner-friendly but production-minded collection of front-end templates. Default design is clean, responsive and light/white-theme.
 
-## Templates
+## 01 — Menu systems
 
-1. `templates/01-simple-menu` — display-only restaurant menu.
-2. `templates/02-menu-with-cart` — menu with + buttons, temporary cart, quantity controls, subtotal/total, and "My Orders" view.
-3. `templates/03-universal-website` — reusable website starter for restaurants, gold/jewellery, personal portfolios, services, and small businesses.
+- `templates/01-simple-menu` — premium display-only digital menu with search and categories.
+- `templates/02-menu-with-cart` — searchable menu, +/− quantities, My Orders drawer, temporary total and local persistence.
 
-## Supporting areas
+## 02 — Universal website foundation
 
-- `shared/` — reusable CSS/JS patterns and data structure guidance.
-- `ai-integration/` — safe integration notes and provider-agnostic API placeholders. Never commit API keys.
-- `docs/` — beginner roadmap explaining what each file does and how the pieces connect.
+- `templates/03-universal-website` — master configurable website foundation.
 
-## Design rule
+## 03 — Separate end-to-end vertical templates
 
-Templates use a clean light/white theme by default so they can be customized easily in VS Code or imported into a larger project.
+1. `templates/04-restaurant-pro` — restaurant website + menu + temporary cart + reservation enquiry.
+2. `templates/05-gold-jewellery-pro` — jewellery catalogue + search/filter + wishlist interaction + consultation enquiry.
+3. `templates/06-personal-portfolio-pro` — profile + project search/filter + contact flow.
+4. `templates/07-business-pro` — business positioning + solutions + proof + lead form.
+5. `templates/08-services-pro` — service catalogue + category filtering + service request flow.
+6. `templates/09-small-shop-pro` — product catalogue + search/filter + persistent cart + demo checkout.
+7. `templates/10-student-project-pro` — project showcase + search + team + documentation structure.
 
-## Important
+## Architecture philosophy
 
-These are starter templates, not a production ordering/payment backend. Cart totals are client-side and temporary. A real ordering system needs a backend, database, authentication, validation, security controls, and payment/order infrastructure.
+Think of every template as a complete body:
+
+- **Skeleton:** folders/files and sections.
+- **Blood vessels:** data/state flow.
+- **Skin:** HTML/CSS UI.
+- **Brain:** JavaScript behavior.
+- **Heart:** the core user journey.
+- **Tone:** brand copy and visual personality.
+
+## Comments inside code
+
+Templates include comments explaining when a feature is appropriate, what the code is doing, and where a future backend/API should replace demo behavior.
+
+## Production warning
+
+These templates run without a backend so they are easy to learn and prototype. LocalStorage, demo forms and client-side totals are not a secure multi-user production backend. Production systems should add server-side validation, authentication where required, database persistence, rate limiting, secure environment variables, logging, monitoring and appropriate payment/order infrastructure.
+
+## Beginner workflow
+
+1. Copy the closest template.
+2. Change its data/config first.
+3. Run it in VS Code.
+4. Inspect the HTML, CSS and JavaScript.
+5. Change one feature at a time.
+6. Commit to GitHub.
+7. Only introduce Node/Express/database layers when the project actually needs them.
+
+See `docs/PRO-TEMPLATE-MAP.md` for the full upgrade path.
