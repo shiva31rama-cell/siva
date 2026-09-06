@@ -1,15 +1,24 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Simple Restaurant Menu</title><link rel="stylesheet" href="style.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pro Simple Menu</title>
+<style>
+/* USE THIS TEMPLATE when a customer only needs a fast digital menu. No backend required. */
+:root{--bg:#fff;--card:#f8fafc;--text:#111827;--muted:#64748b;--line:#e2e8f0;--accent:#111827}*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text)}.wrap{max-width:1100px;margin:auto;padding:24px}.hero{padding:44px 0 24px}.eyebrow{letter-spacing:.15em;font-size:12px;color:var(--muted)}h1{font-size:clamp(32px,6vw,60px);margin:8px 0}.toolbar{display:flex;gap:10px;flex-wrap:wrap;position:sticky;top:0;background:#ffffffee;padding:12px 0;backdrop-filter:blur(12px);z-index:5}.search,.chip,button{border:1px solid var(--line);border-radius:12px;padding:11px 14px;background:#fff;color:var(--text)}.search{flex:1;min-width:220px}.chip.active,button{background:var(--accent);color:#fff}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px}.price{font-weight:800;font-size:18px}.muted{color:var(--muted)}footer{padding:40px 0;color:var(--muted)}
+</style>
 </head>
-<body>
-  <main class="container">
-    <header><p class="eyebrow">DIGITAL MENU</p><h1 id="restaurantName">Your Restaurant</h1><p id="restaurantTagline">Fresh food • Simple menu</p></header>
-    <nav id="categoryNav" class="categories" aria-label="Menu categories"></nav>
-    <section id="menu" class="menu-grid"></section>
-  </main>
-  <script src="menu-data.js"></script><script src="script.js"></script>
-</body>
-</html>
+<body><main class="wrap">
+<section class="hero"><span class="eyebrow">DIGITAL MENU</span><h1 id="brand">Your Restaurant</h1><p id="tagline" class="muted">Fresh food, clearly presented.</p></section>
+<div class="toolbar"><input id="search" class="search" placeholder="Search menu items..." aria-label="Search menu"><div id="cats"></div><button id="theme">Theme</button></div>
+<section id="menu" class="grid" aria-live="polite"></section><footer>Tip: edit the <b>MENU</b> array in this file for each client. This template is display-only.</footer>
+</main><script>
+/* BEGINNER MAP: brand/tagline = content; MENU = data; render() = UI; event listeners = behavior. */
+const BRAND={name:'Your Restaurant',tagline:'Fresh food, clearly presented.'};
+// SUGGESTION: replace this array with JSON/API data later when a backend is introduced.
+const MENU=[{name:'Paneer Tikka',cat:'Starters',price:180,desc:'Char-grilled cottage cheese with spices.'},{name:'Veg Biryani',cat:'Main Course',price:220,desc:'Fragrant rice with seasonal vegetables.'},{name:'Masala Dosa',cat:'South Indian',price:120,desc:'Crisp dosa with sambar and chutney.'},{name:'Filter Coffee',cat:'Beverages',price:70,desc:'Classic South Indian filter coffee.'}];
+let category='All';const $=s=>document.querySelector(s);brand.textContent=BRAND.name;tagline.textContent=BRAND.tagline;
+function renderCats(){const cats=['All',...new Set(MENU.map(x=>x.cat))];$('#cats').innerHTML=cats.map(c=>`<button class="chip ${c===category?'active':''}" onclick="setCat('${c.replaceAll("'","\\'")}')">${c}</button>`).join('')}
+function render(){const q=$('#search').value.toLowerCase();const rows=MENU.filter(x=>(category==='All'||x.cat===category)&&(`${x.name} ${x.desc}`.toLowerCase().includes(q)));$('#menu').innerHTML=rows.map(x=>`<article class="card"><div class="muted">${x.cat}</div><h2>${x.name}</h2><p class="muted">${x.desc}</p><div class="price">₹${x.price}</div></article>`).join('')||'<p>No matching items.</p>';renderCats()}
+function setCat(c){category=c;render()}$('#search').addEventListener('input',render);$('#theme').onclick=()=>document.body.style.filter=document.body.style.filter?'':'invert(.92) hue-rotate(180deg)';render();
+</script></body></html>
